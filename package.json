@@ -1,0 +1,22 @@
+{
+  "name": "calcuchat",
+  "version": "1.0.0",
+  "description": "chatting but via simple equations. will you strike up a connection? who knows! the results my be electrifying!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BeardedBeauty/CalcuChat.git"
+  },
+  "keywords": [
+    "calculator"
+  ],
+  "author": "john ochs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BeardedBeauty/CalcuChat/issues"
+  },
+  "homepage": "https://github.com/BeardedBeauty/CalcuChat#readme"
+}
