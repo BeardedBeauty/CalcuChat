@@ -1,0 +1,29 @@
+{
+  "name": "calcuchat",
+  "version": "1.0.0",
+  "description": "chatting but via simple equations. will you strike up a connection? who knows! the results my be electrifying!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BeardedBeauty/CalcuChat.git"
+  },
+  "keywords": [
+    "calculator"
+  ],
+  "author": "john ochs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BeardedBeauty/CalcuChat/issues"
+  },
+  "homepage": "https://github.com/BeardedBeauty/CalcuChat#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  }
+}

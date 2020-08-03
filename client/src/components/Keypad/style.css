@@ -1,0 +1,10 @@
+.pad {
+    width: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button {
+    float: left
+}
