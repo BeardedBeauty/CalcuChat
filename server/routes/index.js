@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const users = require("./users.js");
 
-router.use("/users", users);
-
+router.get("/", (req, res) => {
+    res.send({ response: "Server is up and running." }).status(200);
+});
 
 module.exports = router;
