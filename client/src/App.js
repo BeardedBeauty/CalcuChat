@@ -2,7 +2,9 @@ import React from 'react';
 import Keypad from "./components/Keypad";
 import './App.css';
 import io from "socket.io-client";
+// const ENDPOINT = 'https://project-chat-application.herokuapp.com/';
 
+let socket;
 
 class App extends React.Component {
 	constructor(props) {
