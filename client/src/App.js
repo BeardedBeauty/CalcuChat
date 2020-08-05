@@ -3,7 +3,9 @@ import Keypad from "./components/Keypad";
 import Chat from "./components/Chat";
 import './App.css';
 import io from "socket.io-client";
-// const ENDPOINT = 'https://project-chat-application.herokuapp.com/';
+
+const host = "https://immense-falls-83737.herokuapp.com";
+// const host = "http://192.168.0.35:3010";
 
 let socket;
 
@@ -15,34 +17,39 @@ class App extends React.Component {
 			display2: "",
 			displaySign: "",
 			messages: [],
-			content: [],
-			answer: ""
+			answer: "",
+			sendString: ""
 		}
 	}
 
 	componentDidMount = () => {
-		socket = io(`192.168.0.35:3010`);
-		console.log(socket);
-		socket.emit("join", { room: "main" }, ({ error }) => {
-			console.log(error);
-		});
-		socket.on("message", message => this.setState({ messages: [...this.state.messages, message] }));
+		socket = io(host);
+		// socket.emit("join", { room: "math room" }, ({ error }) => {
+		// 	console.log(error);
+		// });
+		// socket.on("message", message => this.setState({ messages: [...this.state.messages, message] }));
 	}
 
-	componentDidUpdate = () => this.sum();
-
 	componentWillUnmount = () => {
-		socket = io(`192.168.0.35:3010`);
+		socket = io(host);
 		socket.emit("disconnect");
 		socket.off();
 	}
 
 	parse = aleph => {
-		if (aleph === "+" || aleph === "-" || aleph === "x" || aleph === "÷") this.setState({ displaySign: aleph });
-		else { this.state.display1 ? this.setState({ display2: aleph }) : this.setState({ display1: aleph }); }
+		if (aleph === ".") this.enter();
+		else if (aleph === "~") this.setState({
+			display1: "",
+			display2: "",
+			displaySign: "",
+		});
+		else {
+			if (aleph === "+" || aleph === "-" || aleph === "x" || aleph === "÷") this.setState({ displaySign: aleph });
+			else { this.state.display1 ? this.setState({ display2: aleph }) : this.setState({ display1: aleph }); }
+		}
 	}
 
-	sum = () => {
+	enter = () => {
 		let beth;
 		if (this.state.display1 && this.state.display2 && this.state.displaySign) {
 			if (this.state.displaySign === "+") beth = this.state.display1 + this.state.display2;
@@ -50,16 +57,12 @@ class App extends React.Component {
 			else if (this.state.displaySign === "x") beth = this.state.display1 * this.state.display2;
 			else if (this.state.displaySign === "÷") beth = this.state.display1 / this.state.display2;
 		}
-		this.send(beth)
-	}
-
-	send = gimel => {
-		let beth = this.state.display1 + this.state.displaySign + this.state.display2 + " = " + gimel;
+		let gimel = this.state.display1 + this.state.displaySign + this.state.display2 + " = " + beth;
 		if (beth !== undefined && gimel !== undefined) this.setState({
-			answer: beth,
+			sendString: gimel,
 			display1: "",
 			display2: "",
-			displaySign: ""
+			displaySign: "",
 		});
 	}
 
@@ -71,7 +74,7 @@ class App extends React.Component {
 					<p>{this.state.display1 + this.state.displaySign + this.state.display2}</p>
 				</div>
 				<Keypad enter={this.parse} />
-				<Chat eq={this.state.answer} />
+				<Chat eq={this.state.sendString} />
 			</div>
 		);
 	}

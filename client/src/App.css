@@ -11,11 +11,19 @@ header {
 }
 
 .fade {
-  transition: .3s;
+  transition: .2s;
 }
 
 #hud {
-  width: 100%;
+  width: 180px;
   height: 100px;
   font-size: 32px;
+  background-color: #131313;
+  border-radius: 6px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 8px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

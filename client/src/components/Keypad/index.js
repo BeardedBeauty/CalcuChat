@@ -17,7 +17,8 @@ const Keypad = props => {
             <div className="button fade" onClick={() => props.enter("-")}>-</div>
             <div className="button fade" onClick={() => props.enter("x")}>x</div>
             <div className="button fade" onClick={() => props.enter("÷")}>÷</div>
-            {/* <div className="button fade" onClick={() => props.enter(".")}>enter</div> */}
+            <div className="enterB fade" onClick={() => props.enter(".")}>send</div>
+            <div className="clearB fade" onClick={() => props.enter("~")}>clear</div>
         </div>
     )
 }
