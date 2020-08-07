@@ -13,12 +13,13 @@ const Keypad = props => {
             <div className="button fade" onClick={() => props.enter(7)}>7</div>
             <div className="button fade" onClick={() => props.enter(8)}>8</div>
             <div className="button fade" onClick={() => props.enter(9)}>9</div>
+            <div className="button fade" onClick={() => props.enter(0)}>0</div>
             <div className="button fade" onClick={() => props.enter("+")}>+</div>
             <div className="button fade" onClick={() => props.enter("-")}>-</div>
             <div className="button fade" onClick={() => props.enter("x")}>x</div>
             <div className="button fade" onClick={() => props.enter("÷")}>÷</div>
-            <div className="enterB fade" onClick={() => props.enter(".")}>send</div>
-            <div className="clearB fade" onClick={() => props.enter("~")}>clear</div>
+            <div className="button fade" onClick={() => props.enter("~")}>clear</div>
+            <div className="clearB fade" onClick={() => props.enter(".")}>send</div>
         </div>
     )
 }

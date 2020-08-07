@@ -30,6 +30,8 @@ class App extends React.Component {
 		// socket.on("message", message => this.setState({ messages: [...this.state.messages, message] }));
 	}
 
+	componentWillUpdate = () => console.log(this.state)
+
 	componentWillUnmount = () => {
 		socket = io(host);
 		socket.emit("disconnect");
@@ -45,13 +47,13 @@ class App extends React.Component {
 		});
 		else {
 			if (aleph === "+" || aleph === "-" || aleph === "x" || aleph === "÷") this.setState({ displaySign: aleph });
-			else { this.state.display1 ? this.setState({ display2: aleph }) : this.setState({ display1: aleph }); }
+			else { this.state.display1 !== "" ? this.setState({ display2: aleph }) : this.setState({ display1: aleph }); }
 		}
 	}
 
 	enter = () => {
 		let beth;
-		if (this.state.display1 && this.state.display2 && this.state.displaySign) {
+		if (this.state.display1 !== "" && this.state.display2 !== "" && this.state.displaySign) {
 			if (this.state.displaySign === "+") beth = this.state.display1 + this.state.display2;
 			else if (this.state.displaySign === "-") beth = this.state.display1 - this.state.display2;
 			else if (this.state.displaySign === "x") beth = this.state.display1 * this.state.display2;
