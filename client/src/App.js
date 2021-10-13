@@ -22,13 +22,7 @@ class App extends React.Component {
 		}
 	}
 
-	componentDidMount = () => {
-		socket = io(host);
-		// socket.emit("join", { room: "math room" }, ({ error }) => {
-		// 	console.log(error);
-		// });
-		// socket.on("message", message => this.setState({ messages: [...this.state.messages, message] }));
-	}
+	componentDidMount = () => socket = io(host);
 
 	componentWillUpdate = () => console.log(this.state)
 

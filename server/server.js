@@ -39,7 +39,6 @@ io.on('connection', socket => {
         // const user = getUser(socket.id);
         console.log(message)
         io.to("math room").emit('message', { text: message });
-
         // callback();
     });
 
